@@ -58,11 +58,11 @@ namespace Common
         {
             //TODO #2: Return the element in position 'index'
             IntListNode node = First;
-            int i = 0
-            while (i < index && node=!null)
+            int i = 0;
+            while ((i < index) && (node !=null))
             { 
                node = node.Next;
-               i++ 
+               i++;
             }
             return node;
         }
@@ -71,7 +71,7 @@ namespace Common
         public int Get(int index)
         {
             //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). O if the position is out of bounds
-            if (-1<index <= Count()) 
+            if (-1< index && index<= Count()) 
             { 
                 return GetNode(index).Value; 
             }
@@ -84,7 +84,7 @@ namespace Common
             //TODO #4: return the number of elements on the list
             IntListNode node = First;
             int count= 0;
-            while(node=!null)
+            while(node!=null)
             {
                 node = node.Next;
                 count++;
@@ -97,9 +97,10 @@ namespace Common
         {
             //TODO #5: remove the element on the index-th position. Do nothing if position is out of bounds
             
-            if (-1 < index <= Count())
+            if (-1 < index && index < Count())
             {
-                GetNode(index - 1).Next = GetNode(index).Next;
+                if(index !=0)GetNode(index - 1).Next = GetNode(index).Next;
+                else { First = First.Next; }
             }
 
         }
@@ -107,9 +108,9 @@ namespace Common
         
         public void Clear()
         {
-            //TODO #6: remove all the elements on the list
-            IntListNode node = First;
-            if (node != null) node = null;
+            //TODO #6: remove all the elements on the list            
+
+            First = null;
             
         }
     }

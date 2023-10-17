@@ -35,9 +35,9 @@ namespace Common
         public int Get(int index)
         {
             //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). O if the position is out of bounds
-            if(0 < indexreturn < NumElements)]
-            { 
-               return getNode(index);
+            if (index >= 0 || index < NumElements)
+            {
+                return Values[index];
             }
             else{ return 0; }
         }
@@ -55,11 +55,9 @@ namespace Common
         public void Remove(int index)
         {
             //TODO #5: remove the element on the index-th position. Do nothing if position is out of bounds
-            if(Get(index) =!0)
+            if(0<=index||index<NumElements)
             {
-                while(Get(index+1) != null) {
-                    Values[index] = Get(index + 1);
-                }
+                Values[index] = 0;
             }
         }
 
@@ -69,7 +67,7 @@ namespace Common
             //TODO #6: remove all the elements on the list
             for(int i = 0; i<NumElements; i++)
             {
-                Values[i] = null;
+                Values[i] = 0;
             }
         }
     }

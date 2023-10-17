@@ -9,6 +9,8 @@ namespace Common
         public GenericArrayList(int n)
         {
             //TODO #1: initialize Values with an array of size n
+            NumElements = n;
+            Values = new T[NumElements];
         }
         public string AsString()
         {
