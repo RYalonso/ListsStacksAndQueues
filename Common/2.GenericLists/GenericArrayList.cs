@@ -28,30 +28,47 @@ namespace Common
         public void Add(T value)
         {
             //TODO #2: add a new element to the end of the list
+
+            if (NumElements == Values.Length)
+            {
+                T[] swapArray = new T[Values.Length + 1];
+                Values.CopyTo(swapArray, 0);
+                Values = swapArray;
+            }
+            NumElements++;
+            Values[NumElements - 1] = value;
         }
 
         public T Get(int index)
         {
             //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). Return the default value for object class T if the position is out of bounds
-            
-            return default(T);
+            if (0 < index && index < NumElements)
+            {
+                return Values[index];
+            }
+            else { return default; }
         }
 
         public int Count()
         {
             //TODO #4: return the number of elements on the list
 
-            return 0;
+            return NumElements;
         }
 
         public void Remove(int index)
         {
             //TODO #5: remove the element on the index-th position. Do nothing if position is out of bounds
+            if (0 <= index && index < NumElements)
+            {
+                Values[index] = new T();
+            }
         }
 
         public void Clear()
         {
             //TODO #6: remove all the elements on the list
+            Values = new T[NumElements];
         }
     }
 }

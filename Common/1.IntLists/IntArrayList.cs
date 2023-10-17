@@ -1,5 +1,7 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
+using System.Drawing;
 
 namespace Common
 {
@@ -29,13 +31,23 @@ namespace Common
         public void Add(int value)
         {
             //TODO #2: add a new integer to the end of the list
-            Values[NumElements + 1] = value;
+           
+            if (NumElements == Values.Length)
+            {
+                int[] swapArray = new int[Values.Length + 1];
+                Values.CopyTo(swapArray, 0);
+                Values = swapArray;
+            }
+            NumElements++;
+            Values[NumElements - 1] = value;
+     
+
         }
 
         public int Get(int index)
         {
             //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). O if the position is out of bounds
-            if (index >= 0 || index < NumElements)
+            if (0<index && index < NumElements)
             {
                 return Values[index];
             }
@@ -55,7 +67,7 @@ namespace Common
         public void Remove(int index)
         {
             //TODO #5: remove the element on the index-th position. Do nothing if position is out of bounds
-            if(0<=index||index<NumElements)
+            if(0<=index && index<NumElements)
             {
                 Values[index] = 0;
             }
@@ -65,10 +77,7 @@ namespace Common
         public void Clear()
         {
             //TODO #6: remove all the elements on the list
-            for(int i = 0; i<NumElements; i++)
-            {
-                Values[i] = 0;
-            }
+            Values = null;
         }
     }
 }
