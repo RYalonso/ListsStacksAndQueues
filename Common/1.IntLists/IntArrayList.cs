@@ -13,7 +13,7 @@ namespace Common
         public IntArrayList(int n)
         {
             //TODO #1: initialize Values with an array of size n
-            this.NumElements = n;
+            this.NumElements = 0;
             this.Values= new int[n];
         }
         public string AsString()
@@ -47,7 +47,7 @@ namespace Common
         public int Get(int index)
         {
             //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). O if the position is out of bounds
-            if (0<index && index < NumElements)
+            if (-1<index && index < NumElements)
             {
                 return Values[index];
             }
@@ -69,7 +69,12 @@ namespace Common
             //TODO #5: remove the element on the index-th position. Do nothing if position is out of bounds
             if(0<=index && index<NumElements)
             {
-                Values[index] = 0;
+                while(index < NumElements)
+                {
+                    Values[index] = Values[index+1];
+                    index++;
+                }
+                NumElements--;
             }
         }
 
@@ -77,7 +82,7 @@ namespace Common
         public void Clear()
         {
             //TODO #6: remove all the elements on the list
-            Values = null;
+            NumElements = 0;
         }
     }
 }

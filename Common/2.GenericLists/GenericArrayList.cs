@@ -1,7 +1,7 @@
 using System;
 namespace Common
 {
-    public class GenericArrayList<T> : IGenericList<T> where T : new()
+    public class GenericArrayList<T> : IGenericList<T> 
     {
         T[] Values;
         int NumElements = 0;
@@ -9,7 +9,7 @@ namespace Common
         public GenericArrayList(int n)
         {
             //TODO #1: initialize Values with an array of size n
-            NumElements = n;
+            NumElements = 0;
             Values = new T[NumElements];
         }
         public string AsString()
@@ -42,7 +42,7 @@ namespace Common
         public T Get(int index)
         {
             //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). Return the default value for object class T if the position is out of bounds
-            if (0 < index && index < NumElements)
+            if (-1 < index && index < NumElements)
             {
                 return Values[index];
             }
@@ -61,14 +61,19 @@ namespace Common
             //TODO #5: remove the element on the index-th position. Do nothing if position is out of bounds
             if (0 <= index && index < NumElements)
             {
-                Values[index] = new T();
+                while (index < NumElements-1)
+                {
+                    Values[index] = Values[index + 1];
+                    index++;
+                }
+                NumElements--;
             }
         }
 
         public void Clear()
         {
             //TODO #6: remove all the elements on the list
-            Values = new T[NumElements];
+            NumElements = 0;
         }
     }
 }
