@@ -9,13 +9,9 @@ namespace Common
         GenericArrayList<T> List = new GenericArrayList<T>(10000000);
         public string AsString()
         {
-            string allString="";
             //TODO #2: Return the list as a string. Use the method already implemented in your list
-            for(int i = 0; i < List.Count(); i++)
-            {
-                allString = List.Get(i).ToString + "\n";
-            }
-            return allString;
+            
+            return List.AsString();
         }
 
         public int Count()

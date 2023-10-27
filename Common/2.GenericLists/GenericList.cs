@@ -19,6 +19,7 @@ public class GenericListNode<T>
 public class GenericList<T> : IGenericList<T>
 {
     GenericListNode<T> First = null;
+    GenericListNode<T> Last = null;
 
     public string AsString()
     {
@@ -106,5 +107,10 @@ public class GenericList<T> : IGenericList<T>
     {
         //TODO #6: remove all the elements on the list
         First = null;
+    }
+    public GenericListNode<T> GetLast()
+    {
+        GenericListNode<T> Last = FindNode(Count() - 1);
+        return Last;
     }
 }
