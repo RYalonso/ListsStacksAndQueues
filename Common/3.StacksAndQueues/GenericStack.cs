@@ -39,8 +39,9 @@ namespace Common
         public T Pop()
         {
             //TODO #6: Remove the first object of the list and return it
-            List.Remove(0);
-            return List.Get(0);   
+            T value=List.Get(List.Count()-1);
+            List.Remove(List.Count() - 1);
+            return value;   
             
         }
     }

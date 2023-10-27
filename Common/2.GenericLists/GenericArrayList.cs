@@ -66,6 +66,7 @@ namespace Common
                     Values[index] = Values[index + 1];
                     index++;
                 }
+                
                 NumElements--;
             }
         }
